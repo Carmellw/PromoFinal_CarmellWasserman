@@ -16,6 +16,7 @@ namespace PromoFinal_CarmellWasserman
         public Form1()
         {
             InitializeComponent();
+            ClientArrToForm();
         }
 
         private void textBox_Number_KeyPress(object sender, KeyPressEventArgs e)
@@ -43,6 +44,10 @@ namespace PromoFinal_CarmellWasserman
             {
                 MessageBox.Show("All Fields OK");
                 Client client = FormToClient();
+                client.Insert();
+
+                MessageBox.Show("Saved");
+                ClientArrToForm();
             }
         }
 
@@ -117,5 +122,20 @@ namespace PromoFinal_CarmellWasserman
             { }
                 //כאן תהיה תיבת הודעה או סימון אחר//
 }
+
+        private void ClientArrToForm()
+        {
+
+            //ממירה את הטנ "מ אוסף לקוחות לטופס
+
+            ClientArr clientArr = new ClientArr();
+            clientArr.Fill();
+            listBox_Clients.DataSource = clientArr;
+        }
+
+        private void textBox_FirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -37,6 +37,7 @@
             this.label_ZipCode = new System.Windows.Forms.Label();
             this.textBox_ZipCode = new System.Windows.Forms.TextBox();
             this.save = new System.Windows.Forms.Button();
+            this.listBox_Clients = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // textBox_FirstName
@@ -46,6 +47,7 @@
             this.textBox_FirstName.Name = "textBox_FirstName";
             this.textBox_FirstName.Size = new System.Drawing.Size(214, 31);
             this.textBox_FirstName.TabIndex = 0;
+            this.textBox_FirstName.TextChanged += new System.EventHandler(this.textBox_FirstName_TextChanged);
             this.textBox_FirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Heb_KeyPress);
             // 
             // label_FirstName
@@ -124,11 +126,21 @@
             this.save.UseVisualStyleBackColor = true;
             this.save.Click += new System.EventHandler(this.save_Click);
             // 
+            // listBox_Clients
+            // 
+            this.listBox_Clients.FormattingEnabled = true;
+            this.listBox_Clients.ItemHeight = 25;
+            this.listBox_Clients.Location = new System.Drawing.Point(543, 34);
+            this.listBox_Clients.Name = "listBox_Clients";
+            this.listBox_Clients.Size = new System.Drawing.Size(298, 204);
+            this.listBox_Clients.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(884, 450);
+            this.Controls.Add(this.listBox_Clients);
             this.Controls.Add(this.save);
             this.Controls.Add(this.label_ZipCode);
             this.Controls.Add(this.textBox_ZipCode);
@@ -156,6 +168,7 @@
         private System.Windows.Forms.Label label_ZipCode;
         private System.Windows.Forms.TextBox textBox_ZipCode;
         private System.Windows.Forms.Button save;
+        private System.Windows.Forms.ListBox listBox_Clients;
     }
 }
 
