@@ -38,6 +38,9 @@
             this.textBox_ZipCode = new System.Windows.Forms.TextBox();
             this.save = new System.Windows.Forms.Button();
             this.listBox_Clients = new System.Windows.Forms.ListBox();
+            this.pictureBox_CapsLock = new System.Windows.Forms.PictureBox();
+            this.label_Id = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CapsLock)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox_FirstName
@@ -47,7 +50,6 @@
             this.textBox_FirstName.Name = "textBox_FirstName";
             this.textBox_FirstName.Size = new System.Drawing.Size(214, 31);
             this.textBox_FirstName.TabIndex = 0;
-            this.textBox_FirstName.TextChanged += new System.EventHandler(this.textBox_FirstName_TextChanged);
             this.textBox_FirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Heb_KeyPress);
             // 
             // label_FirstName
@@ -130,16 +132,40 @@
             // 
             this.listBox_Clients.FormattingEnabled = true;
             this.listBox_Clients.ItemHeight = 25;
-            this.listBox_Clients.Location = new System.Drawing.Point(543, 34);
+            this.listBox_Clients.Location = new System.Drawing.Point(574, 40);
             this.listBox_Clients.Name = "listBox_Clients";
             this.listBox_Clients.Size = new System.Drawing.Size(298, 204);
             this.listBox_Clients.TabIndex = 10;
+            this.listBox_Clients.DoubleClick += new System.EventHandler(this.listBox_Clients_DoubleClick);
+            // 
+            // pictureBox_CapsLock
+            // 
+            this.pictureBox_CapsLock.Enabled = false;
+            this.pictureBox_CapsLock.Image = global::PromoFinal_CarmellWasserman.Properties.Resources.caps_lock_icon;
+            this.pictureBox_CapsLock.Location = new System.Drawing.Point(491, 49);
+            this.pictureBox_CapsLock.Name = "pictureBox_CapsLock";
+            this.pictureBox_CapsLock.Size = new System.Drawing.Size(77, 70);
+            this.pictureBox_CapsLock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_CapsLock.TabIndex = 11;
+            this.pictureBox_CapsLock.TabStop = false;
+            this.pictureBox_CapsLock.Visible = false;
+            // 
+            // label_Id
+            // 
+            this.label_Id.AutoSize = true;
+            this.label_Id.Location = new System.Drawing.Point(266, 9);
+            this.label_Id.Name = "label_Id";
+            this.label_Id.Size = new System.Drawing.Size(24, 25);
+            this.label_Id.TabIndex = 12;
+            this.label_Id.Text = "0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 450);
+            this.Controls.Add(this.label_Id);
+            this.Controls.Add(this.pictureBox_CapsLock);
             this.Controls.Add(this.listBox_Clients);
             this.Controls.Add(this.save);
             this.Controls.Add(this.label_ZipCode);
@@ -152,6 +178,7 @@
             this.Controls.Add(this.textBox_FirstName);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CapsLock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,6 +196,8 @@
         private System.Windows.Forms.TextBox textBox_ZipCode;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.ListBox listBox_Clients;
+        private System.Windows.Forms.PictureBox pictureBox_CapsLock;
+        private System.Windows.Forms.Label label_Id;
     }
 }
 

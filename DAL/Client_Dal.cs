@@ -44,5 +44,22 @@ namespace PromoFinal_CarmellWasserman.DAL
             //בהמשך יהיו כאן הוראות נוספות הקשורות לקשרי גומלין...
 
         }
+
+        public static bool Update(int Id, string firstName, string lastName, int phoneNumber, int zipCode)
+        {
+
+            //מעדכנת את הלקוח במסד הנתונים
+
+            string str = "UPDATE Table_Client SET"
+
+            + $" [FirstName] = N'{firstName}'"
+            + $",[LastName] = N'{lastName}'"
+            + $",[PhoneNumber] = {phoneNumber}"
+            + $",[ZipCode] = {zipCode}"
+            + $" WHERE [Id] = {Id}";
+
+            //הפעלת פעולת הSQL -תוך שימוש בפעולה המוכנה ExecuteSql במחלקה Dal והחזרה האם הפעולה הצליחה
+            return Dal.ExecuteSql(str);
+        }
     }
 }

@@ -28,7 +28,17 @@ namespace PromoFinal_CarmellWasserman
         private void textBox_Heb_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
                 e.KeyChar = char.MinValue;
+            }
+
+            else
+            {
+                CapsLockCheck();
+            }
+            
+
+
         }
 
 
@@ -44,10 +54,20 @@ namespace PromoFinal_CarmellWasserman
             {
                 MessageBox.Show("All Fields OK");
                 Client client = FormToClient();
-                client.Insert();
 
-                MessageBox.Show("Saved");
+                if (label_Id.Text == "0")
+                {
+                    client.Insert();
+                    MessageBox.Show("Saved");
+                }
+
+                else
+                {
+                    client.Update();
+                    MessageBox.Show("Updated");
+                }
                 ClientArrToForm();
+                
             }
         }
 
@@ -107,7 +127,7 @@ namespace PromoFinal_CarmellWasserman
             Client client = new Client();
             client.FirstName = textBox_FirstName.Text;
             client.LastName = textBox_LastName.Text;
-
+            client.Id = int.Parse(label_Id.Text);
             //בדיקה האם יש ערך בשדה להמרה
 
             if (textBox_ZipCode.Text != "")
@@ -119,9 +139,17 @@ namespace PromoFinal_CarmellWasserman
         private void CapsLockCheck()
         {
             if (Control.IsKeyLocked(Keys.CapsLock))
-            { }
-                //כאן תהיה תיבת הודעה או סימון אחר//
-}
+            {
+                pictureBox_CapsLock.Visible = true; 
+            }
+
+            else
+            {
+                pictureBox_CapsLock.Visible = false;
+
+            }
+            //כאן תהיה תיבת הודעה או סימון אחר//
+        }
 
         private void ClientArrToForm()
         {
@@ -133,9 +161,22 @@ namespace PromoFinal_CarmellWasserman
             listBox_Clients.DataSource = clientArr;
         }
 
-        private void textBox_FirstName_TextChanged(object sender, EventArgs e)
+        private void ClientToForm(Client client)
         {
 
+            //ממירה את המידע בטנ "מ לקוח לטופס
+
+            label_Id.Text = client.Id.ToString();
+            textBox_FirstName.Text = client.FirstName;
+            textBox_LastName.Text = client.LastName;
+            textBox_PhoneNumber.Text = client.PhoneNumber.ToString();
+            textBox_ZipCode.Text = client.ZipCode.ToString();
+        }
+
+        private void listBox_Clients_DoubleClick(object sender, EventArgs e)
+        {
+            Client client = listBox_Clients.SelectedItem as Client;
+            ClientToForm(client);
         }
     }
 }

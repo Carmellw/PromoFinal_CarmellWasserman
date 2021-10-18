@@ -31,5 +31,6 @@ namespace PromoFinal_CarmellWasserman.BL
                 this.Add(curClient);
             }
         }
+
     }
 }
