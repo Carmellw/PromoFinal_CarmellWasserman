@@ -61,5 +61,17 @@ namespace PromoFinal_CarmellWasserman.DAL
             //הפעלת פעולת הSQL -תוך שימוש בפעולה המוכנה ExecuteSql במחלקה Dal והחזרה האם הפעולה הצליחה
             return Dal.ExecuteSql(str);
         }
+
+        public static bool Delete(int id)
+        {
+
+            //מוחקת את הלקוח ממסד הנתונים
+
+            string str = $"DELETE FROM Table_Client WHERE ID = {id}";
+
+            //הפעלת פעולת הSQL -תוך שימוש בפעולה המוכנה ExecuteSql במחלקה Dal והחזרה האם הפעולה הצליחה
+
+            return Dal.ExecuteSql(str);
+        }
     }
 }

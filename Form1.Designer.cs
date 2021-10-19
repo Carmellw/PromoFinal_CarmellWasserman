@@ -40,6 +40,8 @@
             this.listBox_Clients = new System.Windows.Forms.ListBox();
             this.pictureBox_CapsLock = new System.Windows.Forms.PictureBox();
             this.label_Id = new System.Windows.Forms.Label();
+            this.clear = new System.Windows.Forms.Button();
+            this.delete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CapsLock)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,9 +122,9 @@
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(406, 261);
+            this.save.Location = new System.Drawing.Point(391, 261);
             this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(79, 47);
+            this.save.Size = new System.Drawing.Size(94, 47);
             this.save.TabIndex = 9;
             this.save.Text = "save";
             this.save.UseVisualStyleBackColor = true;
@@ -159,11 +161,33 @@
             this.label_Id.TabIndex = 12;
             this.label_Id.Text = "0";
             // 
+            // clear
+            // 
+            this.clear.Location = new System.Drawing.Point(391, 314);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(94, 47);
+            this.clear.TabIndex = 13;
+            this.clear.Text = "clear";
+            this.clear.UseVisualStyleBackColor = true;
+            this.clear.Click += new System.EventHandler(this.clear_Click);
+            // 
+            // delete
+            // 
+            this.delete.Location = new System.Drawing.Point(391, 367);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(94, 47);
+            this.delete.TabIndex = 14;
+            this.delete.Text = "delete";
+            this.delete.UseVisualStyleBackColor = true;
+            this.delete.Click += new System.EventHandler(this.button_Delete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 450);
+            this.Controls.Add(this.delete);
+            this.Controls.Add(this.clear);
             this.Controls.Add(this.label_Id);
             this.Controls.Add(this.pictureBox_CapsLock);
             this.Controls.Add(this.listBox_Clients);
@@ -198,6 +222,8 @@
         private System.Windows.Forms.ListBox listBox_Clients;
         private System.Windows.Forms.PictureBox pictureBox_CapsLock;
         private System.Windows.Forms.Label label_Id;
+        private System.Windows.Forms.Button clear;
+        private System.Windows.Forms.Button delete;
     }
 }
 

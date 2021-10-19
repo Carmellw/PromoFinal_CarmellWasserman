@@ -15,13 +15,13 @@ namespace PromoFinal_CarmellWasserman.BL
         private string m_LastName;
         private int m_PhoneNumber;
         private int m_ZipCode;
-        private int m_id;
+        private int m_Id;
 
         public string FirstName { get => m_FirstName; set => m_FirstName = value; }
         public string LastName { get => m_LastName; set => m_LastName = value; }
         public int PhoneNumber { get => m_PhoneNumber; set => m_PhoneNumber = value; }
         public int ZipCode { get => m_ZipCode; set => m_ZipCode = value; }
-        public int Id { get => m_id; set => m_id = value; }
+        public int Id { get => m_Id; set => m_Id = value; }
 
 
         public void Insert()
@@ -40,7 +40,7 @@ namespace PromoFinal_CarmellWasserman.BL
             m_LastName = dataRow["LastName"].ToString();
             m_PhoneNumber = (int)dataRow["PhoneNumber"];
             m_ZipCode = (int)dataRow["ZipCode"];
-            this.m_id = (int)dataRow["id"];
+            this.m_Id = (int)dataRow["id"];
         }
 
         public override string ToString()
@@ -48,8 +48,14 @@ namespace PromoFinal_CarmellWasserman.BL
 
         public bool Update()
         {
-            return Client_Dal.Update( m_id , m_FirstName, m_LastName, m_PhoneNumber, m_ZipCode);
+            return Client_Dal.Update( m_Id , m_FirstName, m_LastName, m_PhoneNumber, m_ZipCode);
         }
+
+        public bool Delete()
+        {
+            return Client_Dal.Delete(m_Id);
+        }
+
 
 
     }

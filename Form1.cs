@@ -166,17 +166,72 @@ namespace PromoFinal_CarmellWasserman
 
             //ממירה את המידע בטנ "מ לקוח לטופס
 
-            label_Id.Text = client.Id.ToString();
-            textBox_FirstName.Text = client.FirstName;
-            textBox_LastName.Text = client.LastName;
-            textBox_PhoneNumber.Text = client.PhoneNumber.ToString();
-            textBox_ZipCode.Text = client.ZipCode.ToString();
+            
+
+            if (client != null)
+            {
+                label_Id.Text = client.Id.ToString();
+                textBox_FirstName.Text = client.FirstName;
+                textBox_LastName.Text = client.LastName;
+                textBox_PhoneNumber.Text = client.PhoneNumber.ToString();
+                textBox_ZipCode.Text = client.ZipCode.ToString();
+            }
+
+            else
+            {
+                label_Id.Text = "0";
+                textBox_FirstName.Text = "";
+                textBox_LastName.Text = "";
+                textBox_PhoneNumber.Text = "";
+                textBox_ZipCode.Text = "";
+            }
         }
 
         private void listBox_Clients_DoubleClick(object sender, EventArgs e)
         {
             Client client = listBox_Clients.SelectedItem as Client;
             ClientToForm(client);
+        }
+
+        private void clear_Click(object sender, EventArgs e)
+        {
+            label_Id.Text = "0";
+            textBox_FirstName.Text = "";
+            textBox_LastName.Text = "";
+            textBox_PhoneNumber.Text = "";
+            textBox_ZipCode.Text = "";
+        }
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            Client client = FormToClient();
+            if (client.Id == 0)
+            {
+                MessageBox.Show("You need to choose a client");
+            }
+            else
+
+            {
+
+                //בהמשך תהיה כאן בדיקה שאין מידע נוסף על לקוח זה
+                if (MessageBox.Show("Are you sure?", "warning", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2,
+                MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading) ==
+                System.Windows.Forms.DialogResult.Yes)
+                {
+                    if (client.Delete())
+                    {
+                        MessageBox.Show("Deleted");
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Not Deleted");
+                    }
+                    ClientToForm(null);
+                    ClientArrToForm();
+                }
+            }
         }
     }
 }
