@@ -42,7 +42,12 @@
             this.label_Id = new System.Windows.Forms.Label();
             this.clear = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
+            this.Filter = new System.Windows.Forms.GroupBox();
+            this.textBox_FilterCell = new System.Windows.Forms.TextBox();
+            this.textBox_FilterLastName = new System.Windows.Forms.TextBox();
+            this.textBox_FilterId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CapsLock)).BeginInit();
+            this.Filter.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_FirstName
@@ -181,11 +186,53 @@
             this.delete.UseVisualStyleBackColor = true;
             this.delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
+            // Filter
+            // 
+            this.Filter.Controls.Add(this.textBox_FilterCell);
+            this.Filter.Controls.Add(this.textBox_FilterLastName);
+            this.Filter.Controls.Add(this.textBox_FilterId);
+            this.Filter.Location = new System.Drawing.Point(574, 261);
+            this.Filter.Name = "Filter";
+            this.Filter.Size = new System.Drawing.Size(298, 153);
+            this.Filter.TabIndex = 15;
+            this.Filter.TabStop = false;
+            this.Filter.Text = "Filter";
+            // 
+            // textBox_FilterCell
+            // 
+            this.textBox_FilterCell.Location = new System.Drawing.Point(6, 106);
+            this.textBox_FilterCell.MaxLength = 10;
+            this.textBox_FilterCell.Name = "textBox_FilterCell";
+            this.textBox_FilterCell.Size = new System.Drawing.Size(214, 31);
+            this.textBox_FilterCell.TabIndex = 16;
+            this.textBox_FilterCell.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Number_KeyPress);
+            this.textBox_FilterCell.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
+            // 
+            // textBox_FilterLastName
+            // 
+            this.textBox_FilterLastName.Location = new System.Drawing.Point(6, 69);
+            this.textBox_FilterLastName.Name = "textBox_FilterLastName";
+            this.textBox_FilterLastName.Size = new System.Drawing.Size(214, 31);
+            this.textBox_FilterLastName.TabIndex = 16;
+            this.textBox_FilterLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Heb_KeyPress);
+            this.textBox_FilterLastName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
+            // 
+            // textBox_FilterId
+            // 
+            this.textBox_FilterId.Location = new System.Drawing.Point(6, 30);
+            this.textBox_FilterId.MaxLength = 7;
+            this.textBox_FilterId.Name = "textBox_FilterId";
+            this.textBox_FilterId.Size = new System.Drawing.Size(214, 31);
+            this.textBox_FilterId.TabIndex = 16;
+            this.textBox_FilterId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Number_KeyPress);
+            this.textBox_FilterId.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 450);
+            this.Controls.Add(this.Filter);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.clear);
             this.Controls.Add(this.label_Id);
@@ -203,6 +250,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CapsLock)).EndInit();
+            this.Filter.ResumeLayout(false);
+            this.Filter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,6 +273,10 @@
         private System.Windows.Forms.Label label_Id;
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.Button delete;
+        private System.Windows.Forms.GroupBox Filter;
+        private System.Windows.Forms.TextBox textBox_FilterId;
+        private System.Windows.Forms.TextBox textBox_FilterCell;
+        private System.Windows.Forms.TextBox textBox_FilterLastName;
     }
 }
 

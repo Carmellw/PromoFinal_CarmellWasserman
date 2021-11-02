@@ -32,5 +32,34 @@ namespace PromoFinal_CarmellWasserman.BL
             }
         }
 
+        public ClientArr Filter(int id, string lastName, string cellNumber)
+        {
+            ClientArr clientArr = new ClientArr();
+            Client client;
+            for (int i = 0; i < this.Count; i++)
+            {
+
+                //הצבת הלקוח הנוכחי במשתנה עזר - לקוח
+
+                client = (this[i] as Client);
+                if
+                (
+
+                // מזהה 0 – כלומר, לא נבחר מזהה בסינון
+
+                (id == 0 || client.Id == id)
+                && client.LastName.ToLower().StartsWith(lastName.ToLower())
+                && client.PhoneNumber.ToString().Contains(cellNumber)
+                )
+
+                    //הלקוח ענה לדרישות הסינון - הוספת הלקוח לאוסף הלקוחות המוחזר
+
+                    clientArr.Add(client);
+            }
+            return clientArr;
+        }
+
+
+
     }
 }

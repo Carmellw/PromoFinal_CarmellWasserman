@@ -233,5 +233,29 @@ namespace PromoFinal_CarmellWasserman
                 }
             }
         }
+
+        private void textBox_Filter_KeyUp(object sender, KeyEventArgs e)
+        {
+            int id = 0;
+
+            //אם המשתמש רשם ערך בשדה המזהה
+
+            if (textBox_FilterId.Text != "")
+                id = int.Parse(textBox_FilterId.Text);
+
+            //מייצרים אוסף של כלל הלקוחות
+
+            ClientArr clientArr = new ClientArr();
+            clientArr.Fill();
+
+            //מסננים את אוסף הלקוחות לפי שדות הסינון שרשם המשתמש
+
+            clientArr = clientArr.Filter(id, textBox_FilterLastName.Text,
+            textBox_FilterCell.Text);
+            //מציבים בתיבת הרשימה את אוסף הלקוחות
+
+            listBox_Clients.DataSource = clientArr;
+
+        }
     }
 }
