@@ -17,6 +17,7 @@ namespace PromoFinal_CarmellWasserman
         {
             InitializeComponent();
             ClientArrToForm();
+            CityArrToForm();
         }
 
         private void textBox_Number_KeyPress(object sender, KeyPressEventArgs e)
@@ -32,10 +33,7 @@ namespace PromoFinal_CarmellWasserman
                 e.KeyChar = char.MinValue;
             }
 
-            else
-            {
-                CapsLockCheck();
-            }
+            
             
 
 
@@ -128,6 +126,7 @@ namespace PromoFinal_CarmellWasserman
             client.FirstName = textBox_FirstName.Text;
             client.LastName = textBox_LastName.Text;
             client.Id = int.Parse(label_Id.Text);
+            client.City = comboBox_City.SelectedItem as City;
             //בדיקה האם יש ערך בשדה להמרה
 
             if (textBox_ZipCode.Text != "")
@@ -136,20 +135,7 @@ namespace PromoFinal_CarmellWasserman
             return client;
         }
 
-        private void CapsLockCheck()
-        {
-            if (Control.IsKeyLocked(Keys.CapsLock))
-            {
-                pictureBox_CapsLock.Visible = true; 
-            }
-
-            else
-            {
-                pictureBox_CapsLock.Visible = false;
-
-            }
-            //כאן תהיה תיבת הודעה או סימון אחר//
-        }
+        
 
         private void ClientArrToForm()
         {
@@ -159,6 +145,27 @@ namespace PromoFinal_CarmellWasserman
             ClientArr clientArr = new ClientArr();
             clientArr.Fill();
             listBox_Clients.DataSource = clientArr;
+        }
+
+        private void CityArrToForm(City curCity = null)
+        {
+
+            //ממירה את הטנ "מ אוסף לקוחות לטופס
+
+            CityArr cityArr = new CityArr();
+            cityArr.Fill();
+            if (cityArr != null)
+            {
+                comboBox_City.DataSource = cityArr;
+                comboBox_City.ValueMember = "Id";
+                comboBox_City.DisplayMember = "Name";
+            }
+            
+
+            if (curCity != null)
+            {
+                comboBox_City.SelectedValue = curCity.Id;
+            }
         }
 
         private void ClientToForm(Client client)
@@ -175,6 +182,7 @@ namespace PromoFinal_CarmellWasserman
                 textBox_LastName.Text = client.LastName;
                 textBox_PhoneNumber.Text = client.PhoneNumber.ToString();
                 textBox_ZipCode.Text = client.ZipCode.ToString();
+                comboBox_City.SelectedValue = client.City.Id;
             }
 
             else
@@ -184,6 +192,7 @@ namespace PromoFinal_CarmellWasserman
                 textBox_LastName.Text = "";
                 textBox_PhoneNumber.Text = "";
                 textBox_ZipCode.Text = "";
+                comboBox_City.SelectedItem = null;
             }
         }
 
@@ -256,6 +265,20 @@ namespace PromoFinal_CarmellWasserman
 
             listBox_Clients.DataSource = clientArr;
 
+        }
+
+        private void button_Update_Click(object sender, EventArgs e)
+        {
+            Form_City form_City = new Form_City(comboBox_City.SelectedItem as City);
+            form_City.ShowDialog();
+            CityArrToForm(form_City.SelectedCity);
+        }
+
+        private void button_AddCity_Click(object sender, EventArgs e)
+        {
+            Form_City form_City = new Form_City(comboBox_City.SelectedItem as City);
+            form_City.ShowDialog();
+            CityArrToForm(form_City.SelectedCity);
         }
     }
 }

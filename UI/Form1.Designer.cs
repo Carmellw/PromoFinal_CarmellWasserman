@@ -38,7 +38,6 @@
             this.textBox_ZipCode = new System.Windows.Forms.TextBox();
             this.save = new System.Windows.Forms.Button();
             this.listBox_Clients = new System.Windows.Forms.ListBox();
-            this.pictureBox_CapsLock = new System.Windows.Forms.PictureBox();
             this.label_Id = new System.Windows.Forms.Label();
             this.clear = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
@@ -46,7 +45,10 @@
             this.textBox_FilterCell = new System.Windows.Forms.TextBox();
             this.textBox_FilterLastName = new System.Windows.Forms.TextBox();
             this.textBox_FilterId = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CapsLock)).BeginInit();
+            this.label_City = new System.Windows.Forms.Label();
+            this.comboBox_City = new System.Windows.Forms.ComboBox();
+            this.button_Update = new System.Windows.Forms.Button();
+            this.button_AddCity = new System.Windows.Forms.Button();
             this.Filter.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,7 +129,7 @@
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(391, 261);
+            this.save.Location = new System.Drawing.Point(191, 367);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(94, 47);
             this.save.TabIndex = 9;
@@ -145,18 +147,6 @@
             this.listBox_Clients.TabIndex = 10;
             this.listBox_Clients.DoubleClick += new System.EventHandler(this.listBox_Clients_DoubleClick);
             // 
-            // pictureBox_CapsLock
-            // 
-            this.pictureBox_CapsLock.Enabled = false;
-            this.pictureBox_CapsLock.Image = global::PromoFinal_CarmellWasserman.Properties.Resources.caps_lock_icon;
-            this.pictureBox_CapsLock.Location = new System.Drawing.Point(491, 49);
-            this.pictureBox_CapsLock.Name = "pictureBox_CapsLock";
-            this.pictureBox_CapsLock.Size = new System.Drawing.Size(77, 70);
-            this.pictureBox_CapsLock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_CapsLock.TabIndex = 11;
-            this.pictureBox_CapsLock.TabStop = false;
-            this.pictureBox_CapsLock.Visible = false;
-            // 
             // label_Id
             // 
             this.label_Id.AutoSize = true;
@@ -168,7 +158,7 @@
             // 
             // clear
             // 
-            this.clear.Location = new System.Drawing.Point(391, 314);
+            this.clear.Location = new System.Drawing.Point(291, 367);
             this.clear.Name = "clear";
             this.clear.Size = new System.Drawing.Size(94, 47);
             this.clear.TabIndex = 13;
@@ -227,16 +217,57 @@
             this.textBox_FilterId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Number_KeyPress);
             this.textBox_FilterId.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_Filter_KeyUp);
             // 
+            // label_City
+            // 
+            this.label_City.AutoSize = true;
+            this.label_City.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label_City.Location = new System.Drawing.Point(12, 261);
+            this.label_City.Name = "label_City";
+            this.label_City.Size = new System.Drawing.Size(80, 37);
+            this.label_City.TabIndex = 16;
+            this.label_City.Text = " City";
+            // 
+            // comboBox_City
+            // 
+            this.comboBox_City.FormattingEnabled = true;
+            this.comboBox_City.Location = new System.Drawing.Point(271, 261);
+            this.comboBox_City.Name = "comboBox_City";
+            this.comboBox_City.Size = new System.Drawing.Size(171, 33);
+            this.comboBox_City.TabIndex = 17;
+            // 
+            // button_Update
+            // 
+            this.button_Update.Location = new System.Drawing.Point(91, 367);
+            this.button_Update.Name = "button_Update";
+            this.button_Update.Size = new System.Drawing.Size(94, 47);
+            this.button_Update.TabIndex = 18;
+            this.button_Update.Text = " update";
+            this.button_Update.UseVisualStyleBackColor = true;
+            this.button_Update.Click += new System.EventHandler(this.button_Update_Click);
+            // 
+            // button_AddCity
+            // 
+            this.button_AddCity.Location = new System.Drawing.Point(448, 261);
+            this.button_AddCity.Name = "button_AddCity";
+            this.button_AddCity.Size = new System.Drawing.Size(40, 40);
+            this.button_AddCity.TabIndex = 19;
+            this.button_AddCity.Text = "+";
+            this.button_AddCity.UseVisualStyleBackColor = true;
+            this.button_AddCity.Click += new System.EventHandler(this.button_AddCity_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 450);
+            this.ClientSize = new System.Drawing.Size(884, 436);
+            this.Controls.Add(this.button_AddCity);
+            this.Controls.Add(this.button_Update);
+            this.Controls.Add(this.comboBox_City);
+            this.Controls.Add(this.label_City);
             this.Controls.Add(this.Filter);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.clear);
             this.Controls.Add(this.label_Id);
-            this.Controls.Add(this.pictureBox_CapsLock);
             this.Controls.Add(this.listBox_Clients);
             this.Controls.Add(this.save);
             this.Controls.Add(this.label_ZipCode);
@@ -249,7 +280,6 @@
             this.Controls.Add(this.textBox_FirstName);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_CapsLock)).EndInit();
             this.Filter.ResumeLayout(false);
             this.Filter.PerformLayout();
             this.ResumeLayout(false);
@@ -269,7 +299,6 @@
         private System.Windows.Forms.TextBox textBox_ZipCode;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.ListBox listBox_Clients;
-        private System.Windows.Forms.PictureBox pictureBox_CapsLock;
         private System.Windows.Forms.Label label_Id;
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.Button delete;
@@ -277,6 +306,10 @@
         private System.Windows.Forms.TextBox textBox_FilterId;
         private System.Windows.Forms.TextBox textBox_FilterCell;
         private System.Windows.Forms.TextBox textBox_FilterLastName;
+        private System.Windows.Forms.Label label_City;
+        private System.Windows.Forms.ComboBox comboBox_City;
+        private System.Windows.Forms.Button button_Update;
+        private System.Windows.Forms.Button button_AddCity;
     }
 }
 

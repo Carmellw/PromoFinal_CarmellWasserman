@@ -10,7 +10,7 @@ namespace PromoFinal_CarmellWasserman.DAL
 {
     public class Client_Dal
     {
-        public static bool Insert(string firstName, string lastName, int phoneNumber, int zipCode)
+        public static bool Insert(string firstName, string lastName, int phoneNumber, int zipCode, int city)
         {
 
             //מוסיפה את הלקוח למסד הנתונים
@@ -18,11 +18,11 @@ namespace PromoFinal_CarmellWasserman.DAL
 
             string str = "INSERT INTO Table_Client"
             + "("
-            + "[FirstName],[LastName],[PhoneNumber],[ZipCode]"
+            + "[FirstName],[LastName],[PhoneNumber],[ZipCode],[City]"
             + ")"
             + " VALUES "
             + "("
-            + $"'{firstName}','{lastName}',{phoneNumber},{zipCode}"
+            + $"'{firstName}','{lastName}',{phoneNumber},{zipCode},{city}"
             + ")";
             //הפעלת פעולת הSQL -תוך שימוש בפעולה המוכנה ExecuteSql במחלקה Dal והחזרה האם הפעולה הצליחה
             return Dal.ExecuteSql(str);
@@ -41,11 +41,30 @@ namespace PromoFinal_CarmellWasserman.DAL
 
             //ממלאת את אוסף הטבלאות בטבלת הלקוחות
             Dal.FillDataSet(dataSet, "Table_Client", "[LastName],[FirstName]");
-            //בהמשך יהיו כאן הוראות נוספות הקשורות לקשרי גומלין...
+
+            DataRelation dataRelation = null;
+            City_Dal.FillDataSet(dataSet);
+            dataRelation = new DataRelation(
+
+            //שם קשר הגומלין
+
+            "ClientCity"
+
+            //עמודת הקשר בטבלת האב )המפתח הראשי של טבלת האב(
+
+            , dataSet.Tables["Table_City"].Columns["ID"]
+
+            //עמודת הקשר בטבלת הבן )המפתח הזר בטבלת הבן(
+
+            , dataSet.Tables["Table_Client"].Columns["City"]);
+
+                        //הוספת קשר הגומלין לאוסף הטבלאות
+
+            dataSet.Relations.Add(dataRelation);
 
         }
 
-        public static bool Update(int Id, string firstName, string lastName, int phoneNumber, int zipCode)
+        public static bool Update(int Id, string firstName, string lastName, int phoneNumber, int zipCode, int city)
         {
 
             //מעדכנת את הלקוח במסד הנתונים
@@ -56,6 +75,7 @@ namespace PromoFinal_CarmellWasserman.DAL
             + $",[LastName] = N'{lastName}'"
             + $",[PhoneNumber] = {phoneNumber}"
             + $",[ZipCode] = {zipCode}"
+            + $",[City] = {city}"
             + $" WHERE [Id] = {Id}";
 
             //הפעלת פעולת הSQL -תוך שימוש בפעולה המוכנה ExecuteSql במחלקה Dal והחזרה האם הפעולה הצליחה

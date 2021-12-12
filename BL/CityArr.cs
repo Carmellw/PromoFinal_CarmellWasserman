@@ -10,65 +10,77 @@ using PromoFinal_CarmellWasserman.DAL;
 
 namespace PromoFinal_CarmellWasserman.BL
 {
-    public class ClientArr : ArrayList
+    public class CityArr : ArrayList
     {
         public void Fill()
         {
 
             //להביא מה-DAL טבלה מלאה בכל הלקוחות
 
-            DataTable dataTable = Client_Dal.GetDataTable();
+            DataTable dataTable = City_Dal.GetDataTable();
 
             //להעביר את הערכים מהטבלה לתוך אוסף הלקוחות
             //להעביר כל שורה בטבלה ללקוח
 
             DataRow dataRow;
-            Client curClient;
+            City curCity;
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 dataRow = dataTable.Rows[i];
-                curClient = new Client(dataRow);
-                this.Add(curClient);
+                curCity = new City(dataRow);
+                this.Add(curCity);
             }
         }
 
-        public ClientArr Filter(int id, string lastName, string cellNumber)
+        public CityArr Filter(int id, string name)
         {
-            ClientArr clientArr = new ClientArr();
-            Client client;
+            CityArr cityArr = new CityArr();
+            City city;
             for (int i = 0; i < this.Count; i++)
             {
 
                 //הצבת הלקוח הנוכחי במשתנה עזר - לקוח
 
-                client = (this[i] as Client);
+                city = (this[i] as City);
                 if
                 (
 
                 // מזהה 0 – כלומר, לא נבחר מזהה בסינון
 
-                (id == 0 || client.Id == id)
-                && client.LastName.ToLower().StartsWith(lastName.ToLower())
-                && client.PhoneNumber.ToString().Contains(cellNumber)
+                (id == 0 || city.Id == id)
+                && city.Name.ToLower().StartsWith(name.ToLower())
+                
                 )
 
                     //הלקוח ענה לדרישות הסינון - הוספת הלקוח לאוסף הלקוחות המוחזר
 
-                    clientArr.Add(client);
+                    cityArr.Add(city);
             }
-            return clientArr;
+            return cityArr;
         }
 
-        public bool DoesExist(City curCity)
+        public bool IsContains(string cityName)
         {
 
-            //מחזירה האם לפחות לאחד מהלקוחות יש את היישוב
+            //בדיקה האם יש ישוב עם אותו שם
 
             for (int i = 0; i < this.Count; i++)
-                if ((this[i] as Client).City.Id == curCity.Id)
+                if ((this[i] as City).Name == cityName)
                     return true;
-
             return false;
+        }
+
+        public City GetCityWithMaxId()
+        {
+
+            //מחזירה את הישוב עם המזהה הגבוה ביותר
+
+            City maxCity = new City();
+            for (int i = 0; i < this.Count; i++)
+                if ((this[i] as City).Id > maxCity.Id)
+                    maxCity = this[i] as City;
+
+            return maxCity;
         }
 
 
