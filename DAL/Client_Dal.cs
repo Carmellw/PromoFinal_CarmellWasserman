@@ -58,7 +58,7 @@ namespace PromoFinal_CarmellWasserman.DAL
 
             , dataSet.Tables["Table_Client"].Columns["City"]);
 
-                        //הוספת קשר הגומלין לאוסף הטבלאות
+            //הוספת קשר הגומלין לאוסף הטבלאות
 
             dataSet.Relations.Add(dataRelation);
 

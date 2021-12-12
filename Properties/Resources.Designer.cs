@@ -63,9 +63,39 @@ namespace PromoFinal_CarmellWasserman.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap caps_lock_icon {
+        internal static System.Drawing.Bitmap chunk_the_groundhog_chunk {
             get {
-                object obj = ResourceManager.GetObject("caps_lock_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("chunk_the_groundhog_chunk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chunk_the_groundhog_chunk2 {
+            get {
+                object obj = ResourceManager.GetObject("chunk_the_groundhog_chunk2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chunk_the_groundhog_chunk3 {
+            get {
+                object obj = ResourceManager.GetObject("chunk_the_groundhog_chunk3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chunk_the_groundhog_chunk4 {
+            get {
+                object obj = ResourceManager.GetObject("chunk_the_groundhog_chunk4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

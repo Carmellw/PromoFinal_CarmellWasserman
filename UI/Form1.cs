@@ -11,9 +11,9 @@ using PromoFinal_CarmellWasserman.BL;
 
 namespace PromoFinal_CarmellWasserman
 {
-    public partial class Form1 : Form
+    public partial class Form_Client : Form
     {
-        public Form1()
+        public Form_Client()
         {
             InitializeComponent();
             ClientArrToForm();
@@ -81,42 +81,62 @@ namespace PromoFinal_CarmellWasserman
             if (textBox_FirstName.Text.Length < 2)
             {
                 flag = false;
-                textBox_FirstName.BackColor = Color.Red;
+                label_FirstName.ForeColor = Color.Red;
             }
             else
-                textBox_FirstName.BackColor = Color.White;
+                label_FirstName.ForeColor = Color.Black;
 
             //בדיקת שם משפחה //
 
             if (textBox_LastName.Text.Length < 2)
             {
                 flag = false;
-                textBox_LastName.BackColor = Color.Red;
+                label_LastName.ForeColor = Color.Red;
             }
             else
-                textBox_LastName.BackColor = Color.White;
+                label_LastName.ForeColor = Color.Black;
 
             //בדיקת מספר טלפון //
 
             if (textBox_PhoneNumber.Text.Length != 10)
             {
                 flag = false;
-                textBox_PhoneNumber.BackColor = Color.Red;
+                label_PhoneNumber.ForeColor = Color.Red;
             }
             else
-                textBox_PhoneNumber.BackColor = Color.White;
-            
+                label_PhoneNumber.ForeColor = Color.Black;
+
 
             //בדיקת מיקוד //
 
             if (textBox_ZipCode.Text.Length != 7)
             {
                 flag = false;
-                textBox_ZipCode.BackColor = Color.Red;
+                label_ZipCode.ForeColor = Color.Red;
             }
             else
-                textBox_ZipCode.BackColor = Color.White;
+            {
+                label_ZipCode.ForeColor = Color.Black;
+            }
 
+            if ((comboBox_City.SelectedItem as City).Id < 0)
+            {
+                flag = false;
+                label_City.ForeColor = Color.Red;
+            }
+            else
+            {
+                label_City.ForeColor = Color.Black;
+            }
+
+            if(!flag)
+            {
+                pictureBox1.Image = PromoFinal_CarmellWasserman.Properties.Resources.chunk_the_groundhog_chunk;
+            }
+            else
+            {
+                pictureBox1.Image = PromoFinal_CarmellWasserman.Properties.Resources.chunk_the_groundhog_chunk2;
+            }
             return flag;
         }
 
@@ -130,7 +150,9 @@ namespace PromoFinal_CarmellWasserman
             //בדיקה האם יש ערך בשדה להמרה
 
             if (textBox_ZipCode.Text != "")
+            {
                 client.ZipCode = int.Parse(textBox_ZipCode.Text);
+            }
             client.PhoneNumber = int.Parse(textBox_PhoneNumber.Text);
             return client;
         }
@@ -153,6 +175,17 @@ namespace PromoFinal_CarmellWasserman
             //ממירה את הטנ "מ אוסף לקוחות לטופס
 
             CityArr cityArr = new CityArr();
+
+            //הוספת ישוב ברירת מחדל - בחר ישוב
+            //יצירת מופע חדש של ישוב עם מזהה מינוס 1 ושם מתאים
+
+            City cityDefault = new City();
+            cityDefault.Id = -1;
+            cityDefault.Name = "בחר ישוב";
+            //הוספת הישוב לאוסף הישובים - אותו נציב במקור הנתונים של תיבת הבחירה
+
+            cityArr.Add(cityDefault);
+
             cityArr.Fill();
             if (cityArr != null)
             {
@@ -180,9 +213,19 @@ namespace PromoFinal_CarmellWasserman
                 label_Id.Text = client.Id.ToString();
                 textBox_FirstName.Text = client.FirstName;
                 textBox_LastName.Text = client.LastName;
-                textBox_PhoneNumber.Text = client.PhoneNumber.ToString();
+                if (client.PhoneNumber > 999999999)
+                {
+                    textBox_PhoneNumber.Text = client.PhoneNumber.ToString();
+                }
+                else
+                {
+                    textBox_PhoneNumber.Text = "0" + client.PhoneNumber.ToString();
+                }
                 textBox_ZipCode.Text = client.ZipCode.ToString();
-                comboBox_City.SelectedValue = client.City.Id;
+                if (client.City != null)
+                {
+                    comboBox_City.SelectedValue = client.City.Id;
+                }
             }
 
             else
@@ -192,7 +235,7 @@ namespace PromoFinal_CarmellWasserman
                 textBox_LastName.Text = "";
                 textBox_PhoneNumber.Text = "";
                 textBox_ZipCode.Text = "";
-                comboBox_City.SelectedItem = null;
+                CityArrToForm();
             }
         }
 
@@ -204,11 +247,13 @@ namespace PromoFinal_CarmellWasserman
 
         private void clear_Click(object sender, EventArgs e)
         {
+
             label_Id.Text = "0";
             textBox_FirstName.Text = "";
             textBox_LastName.Text = "";
             textBox_PhoneNumber.Text = "";
             textBox_ZipCode.Text = "";
+            CityArrToForm();
         }
 
         private void button_Delete_Click(object sender, EventArgs e)
@@ -267,18 +312,13 @@ namespace PromoFinal_CarmellWasserman
 
         }
 
-        private void button_Update_Click(object sender, EventArgs e)
-        {
-            Form_City form_City = new Form_City(comboBox_City.SelectedItem as City);
-            form_City.ShowDialog();
-            CityArrToForm(form_City.SelectedCity);
-        }
-
         private void button_AddCity_Click(object sender, EventArgs e)
         {
             Form_City form_City = new Form_City(comboBox_City.SelectedItem as City);
             form_City.ShowDialog();
             CityArrToForm(form_City.SelectedCity);
         }
+
+        
     }
 }

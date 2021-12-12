@@ -133,6 +133,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DB_project.mdf</DependentUpon>
     </Content>
+    <Content Include="Properties\chunk-the-groundhog-chunk.gif" />
+    <Content Include="Properties\chunk-the-groundhog-chunk2.gif" />
+    <Content Include="Properties\chunk-the-groundhog-chunk3.gif" />
+    <Content Include="Properties\chunk-the-groundhog-chunk4.gif" />
+    <None Include="Resources\Image1.gif" />
     <None Include="pictures\caps-lock-icon.jpg" />
     <None Include="Resources\caps-lock-icon.jpg" />
   </ItemGroup>

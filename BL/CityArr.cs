@@ -49,7 +49,7 @@ namespace PromoFinal_CarmellWasserman.BL
 
                 (id == 0 || city.Id == id)
                 && city.Name.ToLower().StartsWith(name.ToLower())
-                
+
                 )
 
                     //הלקוח ענה לדרישות הסינון - הוספת הלקוח לאוסף הלקוחות המוחזר
@@ -77,11 +77,17 @@ namespace PromoFinal_CarmellWasserman.BL
 
             City maxCity = new City();
             for (int i = 0; i < this.Count; i++)
+            {
                 if ((this[i] as City).Id > maxCity.Id)
+                {
                     maxCity = this[i] as City;
+                }
+            }
 
             return maxCity;
         }
+
+    
 
 
 

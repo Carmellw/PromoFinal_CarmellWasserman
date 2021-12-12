@@ -87,14 +87,21 @@ namespace PromoFinal_CarmellWasserman
             if (textBox_Name.Text.Length < 2)
             {
                 flag = false;
-                textBox_Name.BackColor = Color.Red;
+                label_Name.ForeColor = Color.Red;
             }
             else
-                textBox_Name.BackColor = Color.White;
+                label_Name.ForeColor = Color.White;
 
-           
+            if (!flag)
+            {
+                pictureBox1.Image = PromoFinal_CarmellWasserman.Properties.Resources.chunk_the_groundhog_chunk;
+            }
+            else
+            {
+                pictureBox1.Image = PromoFinal_CarmellWasserman.Properties.Resources.chunk_the_groundhog_chunk3;
+            }
 
-            
+
 
             return flag;
         }
